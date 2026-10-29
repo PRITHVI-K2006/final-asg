@@ -1,20 +1,21 @@
 def calculate_grade(average):
- if marks >= 90:
-    return "A"
- elif marks >= 75:
-    return "B"
- elif marks >= 60:
-    return "C"
- else:
-    return "F"
+    if average >= 90: return "A"
+    elif average >= 80: return "B"
+    elif average >= 70: return "C"
+    elif average >= 60: return "D"
+    else: return "F"
+
+def calculate_results(marks):
+    if not marks:
+        return {"total": 0, "average": 0.0, "grade": "F"}
+    total = sum(marks)
+    average = total / len(marks)
+    grade = calculate_grade(average)
+    return {"total": total, "average": round(average, 2), "grade": grade}
+
 if __name__ == "__main__":
-    mark1 = 82
-    mark2 = 90
-    mark3 = 78
-    mark4 = 90
-    mark5 = 75
-    marks= mark1+mark2+mark3+mark4+mark5
-    average=marks/5
-print("Total Marks:", marks)
-print("Average:", average)
-print("Grade:", calculate_grade(average))
+    student_marks = [85, 90, 78, 92]
+    results = calculate_results(student_marks)
+    print(f"Total Marks: {results['total']}")
+    print(f"Average Marks: {results['average']}")
+    print(f"Grade: {results['grade']}")
